@@ -1,5 +1,8 @@
 function Main() {
-    return <main>main</main>;
+    return <main>
+        <div className={"container"}>main
+        </div>
+    </main>;
 }
 
 export default Main;

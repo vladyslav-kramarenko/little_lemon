@@ -1,6 +1,9 @@
+
+import Nav from "./Nav";
 function Header(){
     return <header>
-        <img src={""} alt={""}/>
+        <img src="logo.png" alt="Logo"/>
+        <Nav/>
     </header>
 }
 
