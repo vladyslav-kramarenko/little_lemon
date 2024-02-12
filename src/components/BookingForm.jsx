@@ -1,24 +1,26 @@
-import React, {useState} from "react";
+import {useState} from "react";
 
-function BookingForm() {
+function BookingForm({availableTimes, dispatch}) {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [guests, setGuests] = useState('');
     const [occasion, setOccasion] = useState('');
-    const availableTimes = useState(
-        ['17:00','18:00','19:00','20:00','21:00','22:00']
-    )
+    const handleDateChange = (e) =>{
+        setDate(e.target.value);
+        dispatch(e.target.value);
+    }
+
     return <form className={'booking_form'} >
-    <label htmlFor="res-date">Choose date</label>
-    <input type="date" id="res-date" value={date}
-           onChange={e => setDate(e.target.value)}/>
+        <label htmlFor="res-date">Choose date</label>
+        <input type="date" id="res-date" value={date}
+               onChange={e => setDate(e.target.value)}/>
         <label htmlFor="res-time">Choose time</label>
         <select id="res-time" value={time}
                 onChange={e => setTime(e.target.value)}>
             {
                 availableTimes.map(
                     (time,index) =>
-                    <option key={index}>{time}</option>
+                        <option key={index}>{time}</option>
                 )
             }
         </select>
