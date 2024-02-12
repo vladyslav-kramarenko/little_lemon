@@ -1,16 +1,27 @@
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 function BookingForm({availableTimes, dispatch}) {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [guests, setGuests] = useState('');
     const [occasion, setOccasion] = useState('');
+
+    const [submitted, setSubmitted] = useState(false);
+    const navigate = useNavigate();
+
     const handleDateChange = (e) =>{
         setDate(e.target.value);
         dispatch(e.target.value);
     }
 
-    return <form className={'booking_form'} >
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmitted(true);
+        navigate('/thank-you');
+    };
+
+    return <form onSubmit={handleSubmit} className={'booking_form'} >
         <label htmlFor="res-date">Choose date</label>
         <input type="date" id="res-date" value={date}
                onChange={e => setDate(e.target.value)}/>
