@@ -1,18 +1,24 @@
-import { useReducer } from "react";
-import BookingForm from "./BookingForm";
-
-export const initializeTimes = () => ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-
-export const updateTimes = (state, selectedDate) => {
-    return state;
-}
+import { useEffect, useState } from 'react';
+import { fetchAPI } from '../api';
+import BookingForm from './BookingForm';
 
 function Booking() {
-    const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+const [selectedDate, setSelectedDate] = useState(new Date());
+    const [availableTimes, setAvailableTimes] = useState([]);
+
+    useEffect(() => {
+        fetchAPI(new Date(selectedDate))
+            .then(times => {
+                setAvailableTimes(times);
+            })
+            .catch(error => {
+                console.error('Error fetching available times:', error);
+            });
+    }, [selectedDate]);
 
     return (
-        <div className={"container"}>
-            <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
+        <div className="container">
+            <BookingForm availableTimes={availableTimes} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
         </div>
     );
 }

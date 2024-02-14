@@ -1,7 +1,8 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import fakeAPI from '../api';
 
-function BookingForm({availableTimes, dispatch}) {
+function BookingForm({availableTimes, setSelectedDate}) {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [guests, setGuests] = useState('');
@@ -10,21 +11,30 @@ function BookingForm({availableTimes, dispatch}) {
     const [submitted, setSubmitted] = useState(false);
     const navigate = useNavigate();
 
-    const handleDateChange = (e) =>{
+    const handleDateChange = (e) => {
         setDate(e.target.value);
-        dispatch(e.target.value);
+        setTime('--- Select a Time ---'); // Reset the time when the date changes
+        setSelectedDate(e.target.value);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSubmitted(true);
-        navigate('/thank-you');
+        const formData = {
+            date,
+            time,
+            guests,
+            occasion
+        };
+        if(fakeAPI.submitAPI(formData)) {
+            setSubmitted(true);
+            navigate('/thank-you');
+        }
     };
 
     return <form onSubmit={handleSubmit} className={'booking_form'} >
         <label htmlFor="res-date">Choose date</label>
         <input type="date" id="res-date" value={date}
-               onChange={e => setDate(e.target.value)}/>
+               onChange={handleDateChange}/>
         <label htmlFor="res-time">Choose time</label>
         <select id="res-time" value={time}
                 onChange={e => setTime(e.target.value)}>
