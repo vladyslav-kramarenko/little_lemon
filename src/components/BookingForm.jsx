@@ -1,15 +1,12 @@
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import fakeAPI from '../api';
 
-function BookingForm({availableTimes, setSelectedDate}) {
+function BookingForm({availableTimes, setSelectedDate,submitForm}) {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [guests, setGuests] = useState('');
     const [occasion, setOccasion] = useState('');
 
     const [submitted, setSubmitted] = useState(false);
-    const navigate = useNavigate();
 
     const handleDateChange = (e) => {
         setDate(e.target.value);
@@ -25,10 +22,7 @@ function BookingForm({availableTimes, setSelectedDate}) {
             guests,
             occasion
         };
-        if(fakeAPI.submitAPI(formData)) {
-            setSubmitted(true);
-            navigate('/thank-you');
-        }
+        submitForm(formData);
     };
 
     return <form onSubmit={handleSubmit} className={'booking_form'} >

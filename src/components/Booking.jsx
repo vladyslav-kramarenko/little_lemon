@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
-import { fetchAPI } from '../api';
 import BookingForm from './BookingForm';
-
+import fakeAPI from '../api';
+import {useNavigate} from "react-router-dom";
 function Booking() {
 const [selectedDate, setSelectedDate] = useState(new Date());
     const [availableTimes, setAvailableTimes] = useState([]);
+    const navigate = useNavigate(); // Добавьте эту строку
+    const submitForm = (formData) => {
+        if (fakeAPI.submitAPI(formData)) {
+            navigate('/thank-you');
+        }
+    };
 
     useEffect(() => {
-        fetchAPI(new Date(selectedDate))
+        fakeAPI.fetchAPI(new Date(selectedDate))
             .then(times => {
                 setAvailableTimes(times);
             })
@@ -17,8 +23,8 @@ const [selectedDate, setSelectedDate] = useState(new Date());
     }, [selectedDate]);
 
     return (
-        <div className="container">
-            <BookingForm availableTimes={availableTimes} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+        <div className="container">1
+            <BookingForm availableTimes={availableTimes} selectedDate={selectedDate} setSelectedDate={setSelectedDate} submitForm={submitForm}/>
         </div>
     );
 }
