@@ -5,7 +5,7 @@ import Contacts from '../components/Contacts';
 import About from '../components/About';
 import Main from "../components/Main";
 import Booking from "../components/Booking";
-import ThankYouPage from "../components/ThankYouPage";
+import ConfirmedBooking from "../components/ConfirmedBooking";
 
 const Routes = () => (
     <RouterRoutes>
@@ -13,7 +13,7 @@ const Routes = () => (
         <Route path="/contacts" element={<Contacts/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/booking" element={<Booking/>}/>
-        <Route path="/thank-you" element={<ThankYouPage />} />
+        <Route path="/thank-you" element={<ConfirmedBooking />} />
         <Route path="*" element={<Main/>}/>
     </RouterRoutes>
 );

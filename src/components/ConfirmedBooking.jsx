@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ThankYouPage() {
+function ConfirmedBooking() {
     return (
         <div>
             <h2>Thank you for your reservation!</h2>
@@ -8,4 +8,4 @@ function ThankYouPage() {
     );
 }
 
-export default ThankYouPage;
+export default ConfirmedBooking;

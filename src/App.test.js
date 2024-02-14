@@ -1,7 +1,7 @@
 import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import Booking from "./components/Booking";
 import {initializeTimes, updateTimes} from './components/Booking';
-import ThankYouPage from "./components/ThankYouPage";
+import ConfirmedBooking from "./components/ConfirmedBooking";
 import {MemoryRouter} from "react-router-dom";
 
 test('Renders the BookingForm heading', () => {
@@ -37,7 +37,7 @@ test('BookingForm can be submitted by the user', async () => {
     const {getByText} = render(
         <MemoryRouter initialEntries={['/']}>
             <Booking/>
-            <ThankYouPage/>
+            <ConfirmedBooking/>
         </MemoryRouter>
     );
 
