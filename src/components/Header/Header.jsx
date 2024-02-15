@@ -4,7 +4,6 @@ import './Header.css';
 function Header(){
     return <header >
         <div className={"container"}>
-        {/*    <div>*/}
                 <div className="text-section">
                     <h1 className={"restaurant-name"}>Little Lemon</h1>
                     <p className={"restaurant-location"}>Chicago</p>
@@ -19,8 +18,6 @@ function Header(){
                 <div className={"image-section"}>
                     <img src={restaurantFood} alt={"restaurantFood"}/>
                 </div>
-            {/*</div>*/}
-
         </div>
     </header>
 }
