@@ -26,7 +26,7 @@ function BookingForm({availableTimes, setSelectedDate,submitForm}) {
         submitForm(formData);
     };
 
-    return <form onSubmit={handleSubmit} className={'booking_form'} >
+    return <form onSubmit={handleSubmit} className={'booking_form'}>
 
         <label htmlFor="res-date">Choose date</label>
         <input type="date" id="res-date" value={date}
@@ -37,7 +37,7 @@ function BookingForm({availableTimes, setSelectedDate,submitForm}) {
                 onChange={e => setTime(e.target.value)}>
             {
                 availableTimes.map(
-                    (time,index) =>
+                    (time, index) =>
                         <option key={index}>{time}</option>
                 )
             }
@@ -54,8 +54,9 @@ function BookingForm({availableTimes, setSelectedDate,submitForm}) {
             <option>Birthday</option>
             <option>Anniversary</option>
         </select>
-
-        <input type="submit" value="Make Your reservation"/>
+        <button type="submit" className="form_submit_button">Make Your Reservation</button>
+        {/*<input type="submit" value="Make Your reservation"/>*/}
     </form>;
 }
+
 export default BookingForm;

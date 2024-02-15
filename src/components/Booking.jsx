@@ -26,7 +26,7 @@ const [selectedDate, setSelectedDate] = useState(new Date());
     }, [selectedDate]);
 
     return (
-        <div className="container">
+        <div>
             <BookingForm availableTimes={availableTimes}
                          selectedDate={selectedDate}
                          setSelectedDate={setSelectedDate}
