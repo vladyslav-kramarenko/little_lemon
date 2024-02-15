@@ -1,7 +1,6 @@
-
-import Nav from "../Nav/Nav";
 import {Link} from "react-router-dom";
 import restaurantFood from './restaurantFood.jpg';
+import './Header.css';
 function Header(){
     return <header >
         <div className={"container"}>
