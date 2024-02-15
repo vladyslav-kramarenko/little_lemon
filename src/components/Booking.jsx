@@ -12,19 +12,25 @@ const [selectedDate, setSelectedDate] = useState(new Date());
         }
     };
 
+    const updateTimes = async (selectedDate) => {
+        try {
+            const times = await fakeAPI.fetchAPI(new Date(selectedDate));
+            setAvailableTimes(times);
+        } catch (error) {
+            console.error('Error fetching available times:', error);
+        }
+    };
+
     useEffect(() => {
-        fakeAPI.fetchAPI(new Date(selectedDate))
-            .then(times => {
-                setAvailableTimes(times);
-            })
-            .catch(error => {
-                console.error('Error fetching available times:', error);
-            });
+        updateTimes(selectedDate);
     }, [selectedDate]);
 
     return (
         <div className="container">1
-            <BookingForm availableTimes={availableTimes} selectedDate={selectedDate} setSelectedDate={setSelectedDate} submitForm={submitForm}/>
+            <BookingForm availableTimes={availableTimes}
+                         selectedDate={selectedDate}
+                         setSelectedDate={setSelectedDate}
+                         submitForm={submitForm}/>
         </div>
     );
 }
