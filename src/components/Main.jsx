@@ -1,13 +1,10 @@
 import { Link } from 'react-router-dom';
+import Header from "./Header/Header";
 
 function Main() {
     return (
         <main>
-            <div className={"container"}>
-                <Link to="/booking">
-                    <button>Reserve a Table</button>
-                </Link>
-            </div>
+            <Header/>
         </main>
     );
 }
