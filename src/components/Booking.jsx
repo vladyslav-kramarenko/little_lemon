@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import BookingForm from './BookingForm';
+import BookingForm from './BookingForm/BookingForm';
 import fakeAPI from '../api';
 import {useNavigate} from "react-router-dom";
 function Booking() {
@@ -26,7 +26,7 @@ const [selectedDate, setSelectedDate] = useState(new Date());
     }, [selectedDate]);
 
     return (
-        <div className="container">1
+        <div className="container">
             <BookingForm availableTimes={availableTimes}
                          selectedDate={selectedDate}
                          setSelectedDate={setSelectedDate}
