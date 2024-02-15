@@ -1,10 +1,11 @@
 import {Link} from "react-router-dom";
+import logo from './Logo.png';
 
 function Footer() {
     return <footer>
         <div className={"container"}>
         <div className="doormat">
-            <img src="logo.png" alt="Logo"/>
+            <img className={"logo"} src={logo} alt="Logo"/>
         </div>
 
         <div className="navigation">
