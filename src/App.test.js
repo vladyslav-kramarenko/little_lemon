@@ -3,6 +3,7 @@ import Booking from "./components/Booking";
 import {initializeTimes, updateTimes} from './components/Booking';
 import ConfirmedBooking from "./components/ConfirmedBooking";
 import {MemoryRouter} from "react-router-dom";
+import {fetchAPI} from "./api";
 
 test('Renders the BookingForm heading', () => {
     render(
@@ -14,24 +15,28 @@ test('Renders the BookingForm heading', () => {
     expect(headingElement).toBeInTheDocument();
 })
 
-test('initializeTimes returns the expected array of times', () => {
-    const expectedTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-    const actualTimes = initializeTimes();
-    expect(actualTimes).toEqual(expectedTimes);
+test('fetchAPI returns a non-empty array of times', async () => {
+    const date=new Date('2024-02-11');
+    const times = await fetchAPI(date);
+    expect(Array.isArray(times)).toBe(true);
+    expect(times.length).not.toBe(0);
 });
 
-test('updateTimes returns the same value as provided in the state', () => {
-    // Define the initial state
-    const initialState = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-    // Define the selected date
-    const selectedDate = '2024-02-11';
 
-    // Call the updateTimes function with the initial state and selected date
-    const nextState = updateTimes(initialState, selectedDate);
+test('Booking updates available times when selected date changes', async () => {
+    const { getByLabelText, getAllByRole } = render(<Booking />);
 
-    // Assert that the returned value is the same as the initial state
-    expect(nextState).toEqual(initialState);
+    // Simulate changing the date
+    fireEvent.change(getByLabelText(/choose date/i), { target: { value: '2024-02-11' } });
+
+    // Wait for available times to update
+    await waitFor(() => getAllByRole('option'));
+
+    // Check that available times are not empty
+    const times = getAllByRole('option');
+    expect(times.length).not.toBe(0);
 });
+
 
 test('BookingForm can be submitted by the user', async () => {
     const {getByText} = render(
