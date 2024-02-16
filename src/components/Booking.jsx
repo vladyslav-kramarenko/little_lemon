@@ -26,12 +26,12 @@ const [selectedDate, setSelectedDate] = useState(new Date());
     }, [selectedDate]);
 
     return (
-        <div>
+        <main>
             <BookingForm availableTimes={availableTimes}
                          selectedDate={selectedDate}
                          setSelectedDate={setSelectedDate}
                          submitForm={submitForm}/>
-        </div>
+        </main>
     );
 }
 
