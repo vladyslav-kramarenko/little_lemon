@@ -1,6 +1,5 @@
 import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import Booking from "./components/Booking";
-import {initializeTimes, updateTimes} from './components/Booking';
 import ConfirmedBooking from "./components/ConfirmedBooking";
 import {MemoryRouter} from "react-router-dom";
 import {fetchAPI} from "./api";
@@ -8,15 +7,15 @@ import {fetchAPI} from "./api";
 test('Renders the BookingForm heading', () => {
     render(
         <MemoryRouter>
-            <Booking />
+            <Booking/>
         </MemoryRouter>
     );
-    const headingElement = screen.getByText("Make Your reservation");
-    expect(headingElement).toBeInTheDocument();
+    const buttonElement = screen.getByRole('button', {name: "Make Your Reservation"});
+    expect(buttonElement).toBeInTheDocument();
 })
 
 test('fetchAPI returns a non-empty array of times', async () => {
-    const date=new Date('2024-02-11');
+    const date = new Date('2024-02-11');
     const times = await fetchAPI(date);
     expect(Array.isArray(times)).toBe(true);
     expect(times.length).not.toBe(0);
@@ -24,10 +23,17 @@ test('fetchAPI returns a non-empty array of times', async () => {
 
 
 test('Booking updates available times when selected date changes', async () => {
-    const { getByLabelText, getAllByRole } = render(<Booking />);
+    const {
+        getByLabelText,
+        getAllByRole
+    } = render(
+        <MemoryRouter>
+            <Booking/>
+        </MemoryRouter>
+    );
 
     // Simulate changing the date
-    fireEvent.change(getByLabelText(/choose date/i), { target: { value: '2024-02-11' } });
+    fireEvent.change(getByLabelText(/choose date/i), {target: {value: '2024-02-11'}});
 
     // Wait for available times to update
     await waitFor(() => getAllByRole('option'));
@@ -53,7 +59,7 @@ test('BookingForm can be submitted by the user', async () => {
     fireEvent.change(screen.getByLabelText('Occasion'), {target: {value: 'Birthday'}});
 
     // Simulate form submission
-    fireEvent.click(screen.getByText('Make Your reservation'));
+    fireEvent.click(screen.getByRole('button', {name: "Make Your Reservation"}));
 
     await waitFor(() => expect(getByText('Thank you for your reservation!')).toBeInTheDocument());
 
