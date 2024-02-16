@@ -7,7 +7,7 @@ function Footer() {
         <img className={"logo"} src={logo} alt="Logo"/>
         <div className={"doormat"}>
             <div className="navigation">
-                <h3>Doormat Navigation</h3>
+                <h3>Navigation</h3>
                 <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
