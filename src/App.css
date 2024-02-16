@@ -30,6 +30,10 @@ button{
   cursor: pointer;
 }
 
+button:disabled {
+  color: #A88E0B;
+}
+
 button:hover {
   background-color: #e8c307;
   transform: scale(1.05);
@@ -38,4 +42,9 @@ button:hover {
 button:active {
   background-color: #cda306;
   transform: scale(0.95);
+}
+
+.error {
+  color: red;
+  margin-top: 0.5rem;
 }
