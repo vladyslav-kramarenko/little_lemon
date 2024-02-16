@@ -22,17 +22,17 @@ function Footer() {
                 <h3>Contact</h3>
                 <ul>
                     <li>Address</li>
-                    <li>phone</li>
-                    <li>email</li>
+                    <li>(098) 765 43-21</li>
+                    <li>info@little-lemon.com</li>
                 </ul>
             </div>
 
             <div className="social">
                 <h3>Social</h3>
                 <ul>
-                    <li>Address</li>
-                    <li>phone</li>
-                    <li>email</li>
+                    <li>Facebook</li>
+                    <li>Instagram</li>
+                    <li>WhatsApp</li>
                 </ul>
             </div>
         </div>
