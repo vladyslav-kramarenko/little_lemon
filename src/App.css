@@ -1,49 +1,65 @@
+* {
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+    margin: 0;
+    padding: 0;
+}
+
 .App {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 0;
-  padding: 0;
-}
-.container{
-  justify-content: center;
-  display: flex;
-  max-width: 90%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-main{
-  min-height: 100vh;
-  flex-grow: 1;
-  margin-bottom: 10px;
+.container {
+    justify-content: center;
+    display: flex;
+    max-width: 90%;
 }
 
-button{
-  background-color:#F4CE14 ;
-  border-radius: 16px;
-  padding: 10px;
-  font-weight: bold;
-  transition: background-color 0.3s, transform 0.2s;
-  border: none;
-  outline: none;
-  cursor: pointer;
+main {
+    min-height: 100vh;
+    flex-grow: 1;
+    margin-bottom: 10px;
 }
 
-button:disabled {
-  color: #A88E0B;
+a{
+    font-family: Calibri, serif;
+    font-weight: 700;
 }
 
-button:hover {
-  background-color: #e8c307;
-  transform: scale(1.05);
+button, .button {
+    background-color: #F4CE14;
+    border-radius: 16px;
+    padding: 10px;
+    font-family: Calibri, serif;
+    /*font-family: "Arial", serif;*/
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.2s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-button:active {
-  background-color: #cda306;
-  transform: scale(0.95);
+button:disabled, .button:disabled {
+    color: #A88E0B;
+}
+
+button:hover, .button:hover {
+    background-color: #e8c307;
+    transform: scale(1.05);
+}
+
+button:active, .button:active {
+    background-color: #cda306;
+    transform: scale(0.95);
 }
 
 .error {
-  color: red;
-  margin-top: 0.5rem;
+    color: red;
+    margin-top: 0.5rem;
 }
