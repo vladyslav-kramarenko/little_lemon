@@ -1,11 +1,13 @@
 import './BookingForm.css';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
+import {useState} from "react";
 
 function BookingForm({availableTimes, setSelectedDate, submitForm}) {
     const today = new Date();
     const oneYearFromNow = new Date(new Date().setFullYear(today.getFullYear() + 1));
 
+    const [submitAttempted, setSubmitAttempted] = useState(false);
 
     const validationSchema = Yup.object().shape({
         date: Yup
@@ -41,6 +43,7 @@ function BookingForm({availableTimes, setSelectedDate, submitForm}) {
             onSubmit={(values) => {
                 submitForm(values);
             }}
+            validateOnChange={true}
         >
             {(formik) => (
                 <Form className={'booking_form'}>
@@ -81,11 +84,22 @@ function BookingForm({availableTimes, setSelectedDate, submitForm}) {
                         </Field>
                         <ErrorMessage name="occasion" component="div" className="error"/>
                     </div>
-                    <button type="submit" className="form_submit_button" disabled={
-                        !formik.isValid ||
-                        formik.isSubmitting ||
-                        !(formik.touched.date && formik.touched.time && formik.touched.occasion)
-                    }>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setSubmitAttempted(true);
+                            formik.validateForm().then(errors => {
+                                if (Object.keys(errors).length === 0) {
+                                    formik.handleSubmit();
+                                } else {
+                                    Object.keys(formik.values).forEach(field => {
+                                        formik.setFieldTouched(field, true);
+                                    });
+                                }
+                            });
+                        }}
+                        className="form_submit_button"
+                    >
                         Make Your Reservation
                     </button>
                 </Form>
