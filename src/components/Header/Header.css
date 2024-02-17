@@ -5,12 +5,12 @@ header {
     color: white;
     max-height: 500px;
     padding-top: 50px;
-    margin-bottom: 100px;
+    margin-bottom: calc(100px + 10vh);
     justify-content: center;
 }
 
 .restaurant-name{
-    margin: 20px 0 5px;
+    margin: 20px 0;
     color:#F4CE14 ;
     font-family: "Times New Roman", serif;
     font-size: 30pt;
@@ -18,6 +18,7 @@ header {
 
 .restaurant-description{
 
+    margin: 20px 0;
 }
 
 .restaurant-location{
