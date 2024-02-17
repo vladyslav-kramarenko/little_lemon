@@ -2,7 +2,7 @@ import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import Booking from "../Booking";
 import ConfirmedBooking from "../ConfirmedBooking";
 import {MemoryRouter} from "react-router-dom";
-import {fetchAPI} from "../../api";
+import {fetchAPI} from "../../../api";
 
 test('Renders the BookingForm heading', () => {
     render(

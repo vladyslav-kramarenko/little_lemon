@@ -79,7 +79,7 @@ describe('BookingForm JavaScript Validation', () => {
         });
 
         await act(async () => {
-            const submit = screen.getByRole('button', {name: /make your reservation/i})
+            const submit = screen.getByRole('button', {name: /submit reservation/i}) // Adjusted to match aria-label
             userEvent.click(submit);
         });
 

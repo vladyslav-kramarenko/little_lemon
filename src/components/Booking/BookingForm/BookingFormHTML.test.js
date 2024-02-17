@@ -57,6 +57,6 @@ describe('BookingForm HTML5 Validation', () => {
 
         const occasionSelect = screen.getByLabelText('Occasion');
         const firstOption = occasionSelect.firstChild;
-        expect(firstOption).toHaveTextContent('Select an Occasion'); // Checking the text content of the placeholder option
+        expect(firstOption).toHaveTextContent('No Special Reason'); // Checking the text content of the placeholder option
     });
 });

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import BookingForm from './BookingForm/BookingForm';
-import fakeAPI from '../api';
+import fakeAPI from '../../api';
 import {useNavigate} from "react-router-dom";
 function Booking() {
 const [selectedDate, setSelectedDate] = useState(new Date());
@@ -8,7 +8,7 @@ const [selectedDate, setSelectedDate] = useState(new Date());
     const navigate = useNavigate(); // Добавьте эту строку
     const submitForm = (formData) => {
         if (fakeAPI.submitAPI(formData)) {
-            navigate('/thank-you');
+            navigate('/thank-you', { state: { reservation: formData } });
         }
     };
 

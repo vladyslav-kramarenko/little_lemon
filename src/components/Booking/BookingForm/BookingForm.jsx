@@ -33,7 +33,7 @@ function BookingForm({availableTimes, setSelectedDate, submitForm}) {
         date: '',
         time: '',
         guests: 1,
-        occasion: '',
+        occasion: 'none',
     };
 
     return (
@@ -72,7 +72,7 @@ function BookingForm({availableTimes, setSelectedDate, submitForm}) {
                     <label htmlFor="occasion">Occasion</label>
                     <div>
                         <Field as="select" name="occasion" id="occasion">
-                            <option value="None">Select an Occasion</option>
+                            <option value="None">No Special Reason</option>
                             <option value="Birthday">Birthday</option>
                             <option value="Anniversary">Anniversary</option>
                         </Field>
