@@ -4,9 +4,9 @@ import './Footer.css';
 
 function Footer() {
     return <footer>
-        <img className={"logo"} src={logo} alt="Logo"/>
+        <img className={"logo"} src={logo} alt="Little Lemon Logo"/>
         <div className={"doormat"}>
-            <div className="navigation">
+            <nav className="navigation" aria-label="Footer navigation">
                 <h3>Navigation</h3>
                 <ul>
                     <li><Link to="/">Home</Link></li>
@@ -16,23 +16,23 @@ function Footer() {
                     <li><Link to="/order">Order Online</Link></li>
                     <li><Link to="/login">Login</Link></li>
                 </ul>
-            </div>
+            </nav>
 
             <div className="contact">
                 <h3>Contact</h3>
                 <ul>
                     <li>Address</li>
-                    <li>(098) 765 43-21</li>
-                    <li>info@little-lemon.com</li>
+                    <li><a href="tel:(098) 765 43-21">(098) 765 43-21</a></li>
+                    <li><a href="mailto:info@little-lemon.com">info@little-lemon.com</a></li>
                 </ul>
             </div>
 
             <div className="social">
                 <h3>Social</h3>
                 <ul>
-                    <li>Facebook</li>
-                    <li>Instagram</li>
-                    <li>WhatsApp</li>
+                    <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                    <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    <li><a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                 </ul>
             </div>
         </div>
