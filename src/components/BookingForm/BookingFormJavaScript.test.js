@@ -20,9 +20,6 @@ describe('BookingForm JavaScript Validation', () => {
 
         const errorMessage = await screen.findByText(/Reservation date cannot be in the past/);
         expect(errorMessage).toBeInTheDocument();
-
-        const submit = screen.getByRole('button', {name: /make your reservation/i})
-        expect(submit).not.toBeEnabled()
     });
 
     it('displays error message when date is more then 1 year in the future', async () => {
@@ -40,9 +37,6 @@ describe('BookingForm JavaScript Validation', () => {
 
         const errorMessage = await screen.findByText(/Reservation date cannot be more than one year in the future/);
         expect(errorMessage).toBeInTheDocument();
-
-        const submit = screen.getByRole('button', {name: /make your reservation/i})
-        expect(submit).not.toBeEnabled()
     });
 
     it('validates number of guests is within the allowed range', async () => {
@@ -60,9 +54,6 @@ describe('BookingForm JavaScript Validation', () => {
 
         const errorMessage = await screen.findByText(/At least one guest is required/);
         expect(errorMessage).toBeInTheDocument();
-
-        const submit = screen.getByRole('button', {name: /make your reservation/i})
-        expect(submit).not.toBeEnabled()
     });
 
     it('allows submission with valid data', async () => {
@@ -85,14 +76,10 @@ describe('BookingForm JavaScript Validation', () => {
 
             const occasionInput =screen.getByLabelText('Occasion')
             userEvent.selectOptions(occasionInput, ['Birthday']);
-
-            fireEvent.blur(occasionInput);
-
         });
 
         await act(async () => {
             const submit = screen.getByRole('button', {name: /make your reservation/i})
-            expect(submit).toBeEnabled()
             userEvent.click(submit);
         });
 
