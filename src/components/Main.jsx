@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import Header from "./Header/Header";
+import Specials from "./Specials";
 
 function Main() {
     return (
         <main>
             <Header/>
+            <Specials/>
         </main>
     );
 }
