@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Header from "./Header/Header";
-import Specials from "./Specials";
+import Specials from "./Specials/Specials";
 
 function Main() {
     return (
