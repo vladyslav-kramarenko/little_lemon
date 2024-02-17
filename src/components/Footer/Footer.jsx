@@ -6,7 +6,7 @@ function Footer() {
     return <footer>
         <img className={"logo"} src={logo} alt="Little Lemon Logo"/>
         <div className={"doormat"}>
-            <nav className="navigation" aria-label="Footer navigation">
+            <div className="navigation" aria-label="Footer navigation">
                 <h3>Navigation</h3>
                 <ul>
                     <li><Link to="/">Home</Link></li>
@@ -16,7 +16,7 @@ function Footer() {
                     <li><Link to="/order">Order Online</Link></li>
                     <li><Link to="/login">Login</Link></li>
                 </ul>
-            </nav>
+            </div>
 
             <div className="contact">
                 <h3>Contact</h3>
