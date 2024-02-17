@@ -10,7 +10,7 @@ test('Renders the BookingForm heading', () => {
             <Booking/>
         </MemoryRouter>
     );
-    const buttonElement = screen.getByRole('button', {name: "Make Your Reservation"});
+    const buttonElement = screen.getByRole('button', {name: /submit reservation/i});
     expect(buttonElement).toBeInTheDocument();
 })
 
@@ -59,7 +59,7 @@ test('BookingForm can be submitted by the user', async () => {
     fireEvent.change(screen.getByLabelText('Occasion'), {target: {value: 'Birthday'}});
 
     // Simulate form submission
-    fireEvent.click(screen.getByRole('button', {name: "Make Your Reservation"}));
+    fireEvent.click(screen.getByRole('button', {name: /submit reservation/i}));
 
     await waitFor(() => expect(getByText('Thank you for your reservation!')).toBeInTheDocument());
 
